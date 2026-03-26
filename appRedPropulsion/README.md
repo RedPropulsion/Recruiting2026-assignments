@@ -9,8 +9,8 @@ To build and run this application, you need to use `west` to initialize a worksp
 
 ### 1. Directory setup
 ```bash
-mkdir your-zephyr-workspace
-cd your-zephyr-workspace
+git clone https://github.com/RedPropulsion/Recruiting2026-assignments RedPropulsion-assignment
+cd RedPropulsion-assignment
 
 ```
 
@@ -40,20 +40,27 @@ or
 uv pip install west
 ```
 
-### 4. Create a Workspace & Clone
-Create an empty directory for your workspace, then clone this repository inside it:
+### 4. Initialize West
 
 ```bash
-git clone <YOUR_GITHUB_REPO_URL> my_app
+west init -l appRedPropulsion/
+
 ```
 
 ### 5. Update dependencies
 
 ```bash
+west update
 west zephyr-export
 west packages pip --install # or west packages pip | xargs uv pip install 
 west sdk install --toolchain arm-zephyr-eabi
 ```
+
+now you can finally do your first build using
+```bash
+west build -b nucleo_h723zg
+```
+> mase sure to be inside the `appRedPropulsion` dir.
 
 ## Develop your app
 Based on the project assigned to you develop everything in the `src` dir, create other files if needed, you may or may not have to edit the `prj.conf` and `nucleo_h723zg.overlay` files and look for documentation for `STM32 Nucleo-H723ZG`.

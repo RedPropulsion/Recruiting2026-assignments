@@ -25,7 +25,7 @@
             label = "Encoder Phase B";
         };
     };
-}
+};
 
 &timers15 {
     status = "okay";
