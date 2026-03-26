@@ -56,7 +56,9 @@ west sdk install --toolchain arm-zephyr-eabi
 ```
 
 ## Develop your app
-Based on the project assigned to you develop everything in the `src` dir, create other files if needed, you may or may not have to edit the `prj.conf` and `nucleo_h723zg.overlay` files.
+Based on the project assigned to you develop everything in the `src` dir, create other files if needed, you may or may not have to edit the `prj.conf` and `nucleo_h723zg.overlay` files and look for documentation for `STM32 Nucleo-H723ZG`.
+You will definetly have to look up documentation for the device subject of your project.
+
 > note: `.overlay` file is an overlay for `.dts` aka device tree files.
 
 you may contact who assigned you the project for assistance.
@@ -67,3 +69,38 @@ to submit the project make sure it compiles.
 ```bash
 west build apps/my_app
 ```
+# Projects
+For all of the projects write a `Docs.MD` file explaining how the hardware works and what are the concept that a new developer editing your code would need to know, assume they have no knowledge (so just write what you would have liked to have while doing this project)
+
+> If you aren't able to develope working code, proper documentation and understanding of the processes might be enough, so do it properly.
+
+## 1. Servo Driver
+
+Link: https://www.waveshare.com/st3215-servo.htm
+
+| Function     | Pin |
+| ------------ | --- |
+| Servo Enable | PD7 |
+| Servo RX     | PD6 |
+| Servo TX     | PD5 |
+
+## 2. RunCam library
+https://support.runcam.com/hc/en-us/articles/360014537794-RunCam-Device-Protocol
+
+for this project it is not required to setup a Zephyr workflow, you should use plain C and have console I/O to verify if the parser/packet generator work properly.
+However if you want to get used with the development enviroment you can implement this comunication on an UART interface of your choice on the STM32 H7 chip.
+
+User should be able to get RunCam recording status and Start/Stop Recording.
+
+
+
+## 3. GPIO Neopixel(LED) Driver
+| Function        | Pin |
+| --------------- | --- |
+| Neopixel Enable | PE5 |
+| Neopixel Data   | PE6 |
+
+4 LED
+clock CPU: 550 MHz
+
+> note: use GPIO only, no UART or SPI.
